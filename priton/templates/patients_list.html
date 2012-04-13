@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+			
+{% block page_content %}
+
+	{% for person in persons_list %}
+		<div class="content">
+			<img src="{{ person.photo_real }}"  align="{% cycle '' 'right' %}" />
+			<img src="{{ person.comic_picture }}" align="{% cycle 'right' '' %}">
+			<div class="speech"><p>
+				{{ person.speech }}
+			</p></div>
+			<div class="{% cycle 'sig_left' 'sig_right' %}">
+				{{ person.full_name }}
+			</div>
+			<div class="{% cycle 'sig_right' 'sig_left' %}">
+				{{ person.photo_descr }}
+			</div>
+		</div>
+		<hr>
+	{% endfor %}	
+
+{% endblock %}			
+
+
+{% block phrases_blocks %}
+
+	<div class="speech_block_right" style="top: 210px;">
+		<div class="phrase speech-bubble-left">
+			<div class="phrase_phrase"> {{ random_phrases.0.phrase }} &#169;</div>
+			<div class="phrase_author"> {{ random_phrases.0.author }} </div>				
+		</div>
+	</div>
+	<div class="speech_block_left" style="top: 515px;">
+		<div class="phrase speech-bubble-right">
+			<div class="phrase_phrase"> {{ random_phrases.1.phrase }} &#169;</div>
+			<div class="phrase_author"> {{ random_phrases.1.author }} </div>				
+		</div>
+	</div>
+	<div class="speech_block_right" style="top: 900px;">
+		<span> bar </span>
+	</div>
+	<div class="speech_block_left" style="top: 1200px;">
+		<span> trololo </span>
+	</div>
+	
+{% endblock %}
+			

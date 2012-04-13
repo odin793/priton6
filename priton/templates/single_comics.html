@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+
+		<div class="single_comics_box">
+			
+			<div class="comics_title">
+				<h4>{{ comics.title }}</h4>
+				<a class="comics_title_button" href="{{ comics.comics_picture }}" style="text-decoration: none;">	
+					<span class="icon darkgray medium" data-icon="<"></span>
+				</a>
+			</div>
+			
+			<img src="{{ comics.comics_picture_preview }}"/>
+		
+		</div>
+		
+		<hr>
+		
+		<div class="single_comics_description">
+
+			<div class="comics_title">
+				<h5>Действующие лица</h5>
+			</div>
+
+			<ul class="tabs left">
+				{% if patients_blocks %}
+				<li><a href="#tab1">Пациенты</a></li>
+				{% endif %}
+				
+				{% if doctors_blocks %}
+				<li><a href="#tab2">Врачи</a></li>
+				{% endif %}
+
+				{% if essenses_blocks %}
+				<li><a href="#tab3">Сущности</a></li>
+				{% endif %}
+			</ul>
+
+			{% if patients_blocks %}
+				<div id="tab1" class="tab-content">
+					<table cellspacing="0" cellpadding="0">
+						<tbody>
+							{% for block in patients_blocks %}
+								<tr>
+									{% for person in block %}
+										<td> {{ person.short_name }} </td>
+									{% endfor %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>				
+				</div>
+			{% endif %}
+				
+			{% if doctors_blocks %}
+				<div id="tab2" class="tab-content">
+					<table cellspacing="0" cellpadding="0">
+						<tbody>
+							{% for block in doctors_blocks %}
+								<tr>
+									{% for person in block %}
+										<td> {{ person.short_name }} </td>
+									{% endfor %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>				
+				</div>
+			{% endif %}
+			
+			{% if essenses_blocks %}
+				<div id="tab3" class="tab-content">
+					<table cellspacing="0" cellpadding="0">
+						<tbody>
+							{% for block in essenses_blocks %}
+								<tr>
+									{% for essense in block %}
+										<td> {{ essense.name }} </td>
+									{% endfor %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>				
+				</div>
+			{% endif %}
+
+			<div class="comics_title">
+				<h5>Описание</h5>
+			</div>
+			<div class="comics_description">
+				{{ comics.comics_descr }}
+			</div>			
+			
+		</div>
+		
+		<hr>
+		
+		<div class="center_block">
+			<a href="{{ prev_comics.get_absolute_url }}" style="text-decoration: none;">
+				<button class="inset large menu_button">
+					Назад
+				</button>
+			</a>
+			<a href="{{ next_comics.get_absolute_url }}" style="text-decoration: none;">
+				<button class="inset large menu_button_last">
+					Вперед
+				</button>
+			</a>
+		</div>
+
+{% endblock %}

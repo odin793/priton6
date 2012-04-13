@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Пациенты</title>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}styles.css">
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/kickstart.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}style.css" media="all" />
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/kickstart.js"></script>
+		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/prettify.js"></script>         
+	</head> 
+	<body> 
+		
+		<div class="header">
+			<a href="{% url patients_list 'patients' %}" style="text-decoration: none;">
+				<img src="{{ MEDIA_URL }}img/priton-head.jpg" />
+			</a>
+		</div> 
+		
+		<div class="center_block">
+			
+			<a href="/patients/" style="text-decoration: none;">
+			<button class="inset large menu_button" id="button_0">
+				<span data-icon="u" class="icon medium" style="display: inline-block;">
+				</span>
+				Пациенты
+			</button>
+			</a>
+		
+			<a href="/doctors/" style="text-decoration: none;">
+			<button class="inset large menu_button" id="button_1">
+				<span data-icon="p" class="icon medium" style="display: inline-block;">
+				</span>
+				Врачи
+			</button>
+			</a>
+		
+			<a href="/comics/" style="text-decoration: none;">
+				<button class="inset large menu_button_last" id="button_2">
+					<span data-icon="0" class="icon medium" style="display: inline-block;">
+					</span>
+					Комиксы
+				</button>
+			</a>
+
+		</div>
+		
+		
+		<div class="layout">
+			
+			<div class="wrap">
+				{% block page_content %} {% endblock %}
+			</div>
+			{% block phrases_blocks %} {% endblock %}
+		</div>
+		<script type="text/javascript">
+			var pages = ['patients', 'doctors', 'comics'];
+	    current_location = window.location.pathname;
+	    for(var i=0; i!=pages.length; i++) {
+	        if (current_location.indexOf(pages[i]) != -1) {
+						var active_button = document.getElementById('button_' + i)
+						active_button.className += ' red';	
+	        };	
+			};
+		</script>		
+
+	</body>
+</html>	

@@ -1,0 +1,6 @@
+*.pyc
+settings_local.py
+priton6_db
+media/sources/
+venv/
+

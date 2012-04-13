@@ -1,0 +1,254 @@
+/* layout */
+/*-----------------------------------*/
+
+.layout {
+	margin: 0 auto;
+	width: 1200px;
+	/*border: 1px solid black;*/
+	position: relative;
+}
+
+.wrap { 
+    width: 820px;
+    position: relative;
+    /*border: 1px solid black;*/
+    margin: 0 auto;
+}
+
+.header {
+    margin: 30px auto 20px auto;
+    width: 515px;
+    -webkit-box-shadow: 0px 0px 10px 0px #535661;
+    -moz-box-shadow: 0px 0px 10px 0px #535661;
+    box-shadow: 0px 0px 10px 0px #535661;
+}
+
+.center_block {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.no_decoration {
+    text-decoration: none;
+}
+
+
+/* menu */
+/*-----------------------------------*/
+
+.menu_button {
+    margin: 20px 30px 40px 0;
+}
+
+.menu_button_last {
+    margin: 20px 0 40px 0;
+}
+
+/* content */
+/*-----------------------------------*/
+
+.content {
+    width: 800px;
+    height: 200px;
+    background: white;
+    position: relative;
+    padding: 10px;
+	border: 3px solid #f0f0f0;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;
+    -webkit-box-shadow: 5px 5px 20px 0px #535661;
+    -moz-box-shadow: 5px 5px 20px 0px #535661;
+    box-shadow: 5px 5px 20px 0px #535661;
+ 
+}
+
+.photo_right {
+    align: right;
+}
+
+.speech {
+    font-style: italic;
+    text-align: justify;
+    width: 320px;
+    height: 190px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -130px;
+    margin-top: -95px;
+    /*line-height: 190px;*/
+    display: table;
+}
+
+.speech p {
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+.sig_left {
+    font-style:italic;
+    width: 400px;
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+    
+}
+
+.sig_right {
+    font-style:italic;
+	text-align:right;
+	width: 300px;
+	position: absolute;
+	bottom: 20px;
+    right: 20px;
+}
+
+/* phrase blocks */
+/*-----------------------------------*/
+
+.speech_block_left {
+    font-style: italic;
+    position: absolute;
+    left: -40px;
+    width: 180px;
+	padding: 15px;
+	webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;     
+	background: #292929;
+	font-size: 14px;
+	
+	-webkit-box-shadow: 0px 0px 10px 0px red;
+    -moz-box-shadow: 0px 0px 10px 0px red;
+    box-shadow: 0px 0px 10px 0px red;
+}
+
+.speech_block_right {
+    font-style: italic;
+    position: absolute;
+    right: -45px;
+    width: 180px;    
+	padding: 15px;
+    -webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;
+	background: #292929;     
+	font-size: 14px;
+	
+    -webkit-box-shadow: 0px 0px 10px 0px red;
+    -moz-box-shadow: 0px 0px 10px 0px red;
+    box-shadow: 0px 0px 10px 0px red;
+}
+
+.phrase {
+    vertical-align: middle;
+    position: relative;
+    background-color: #292929;
+    position: relative;
+    color: white;
+}
+.phrase:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 15px solid;
+}
+.speech-bubble-left:after {
+    border-right-color: #292929;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-bottom-color: transparent;  
+    top: 50%;
+    right: 100%;
+    margin-top: -15px;
+    margin-right: 10px;
+}
+.speech-bubble-right:after {
+    border-right-color: transparent;
+    border-left-color: #292929;
+    border-top-color: transparent;
+    border-bottom-color: transparent;   
+    left: 100%;
+    top: 50%;
+    margin-top: -15px;
+    margin-left: 10px;
+}
+
+.phrase_phrase {
+    text-align: left;
+    margin-bottom: 7px;
+}
+.phrase_author {
+    text-align: right;
+}
+
+/* Single comics */
+/*-----------------------------------*/
+.single_comics_box {
+	width: 820px;
+	/*height: 500px;*/
+	text-align: center;
+	background: white;
+	position: relative;
+	padding: 10px;
+	border: 3px solid #f0f0f0;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;
+    -webkit-box-shadow: 5px 5px 20px 0px #535661;
+    -moz-box-shadow: 5px 5px 20px 0px #535661;
+    box-shadow: 5px 5px 20px 0px #535661;
+}
+
+.single_comics_box img {
+    margin-bottom: 40px;
+}
+
+.comics_title, .comics_title a {
+    text-align: center;
+    height: 55px;
+    line-height: 55px;
+    color: #d71e10;
+    text-decoration: none;
+}
+
+.comics_picture_link {
+    text-decoration: none;
+}
+
+.comics_detailed_link {
+    color: #d71e10;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.comics_title_button {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+}
+
+.comics_title .icon{border:1px solid #ddd;background:#f5f5f5;box-shadow:inset 0px 0px 5px rgba(0,0,0,0.2);
+-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;padding:10px;margin:5px;cursor:pointer;}
+
+.single_comics_description {
+	width: 820px;
+	background: white;
+	padding: 0px 10px 10px 10px;
+	border: 3px solid #f0f0f0;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;
+    -webkit-box-shadow: 5px 5px 20px 0px #535661;
+    -moz-box-shadow: 5px 5px 20px 0px #535661;
+    box-shadow: 5px 5px 20px 0px #535661;
+}
+
+.single_comics_description .participant {
+    border-right: 1px solid black;
+    padding: 5px 10px;
+}

@@ -39,7 +39,7 @@ def bla(request):
 
 @render_to('comics_list.html')
 def comics_list(request):
-    comics_list = Comics.objects.all().order_by('sort')
+    comics_list = Comics.objects.order_by('sort')[:2] # dev version
     return {'comics_list': comics_list}
 
 
@@ -66,5 +66,18 @@ def comics(request, comics_id):
         'prev_comics': prev_comics,
         'next_comics': next_comics,
     }
+
+@render_to('ajax_comics_list.html')
+def ajax_comics_loader(request):
+    last_page_id = request.POST.get('last_page_id', 'page_1')
+    last_comics_id = request.POST.get('last_item_id', 'comics_1')
+    last_comics_db_id = int(last_comics_id[-1])
+    last_page_id_num = int(last_page_id[-1])
+    new_page_id = last_page_id[:-1] + str(last_page_id_num + 1)
+    count = request.POST.get('count', 5)
     
-    
+    new_comics = Comics.objects.filter(id__gt=last_comics_db_id)[:count]
+    return {
+        'comics_list': new_comics,
+        'new_page_id': new_page_id,
+    }

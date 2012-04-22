@@ -2,8 +2,9 @@
 
 {% block page_content %}			
 
+	<div class="comics_pages" id="page_1">
 	{% for comics in comics_list %}
-		<div class="single_comics_box">
+		<div class="single_comics_box" id="comics_{{ comics.id }}">
 		
 			<div class="comics_title">
 				<a href="{{ comics.get_absolute_url }}" class="comics_link"><h4>{{ comics.title }}</h4></a>
@@ -18,5 +19,14 @@
 	
 		<hr>
 	{% endfor %}
-			
+	</div>
+	
+	<div class="center_block">
+    	<a href="#" id="load_button" style="text-decoration: none;">
+    		<button class="inset large menu_button">
+    			Еще
+    		</button>
+       </a>
+    </div>
+		
 {% endblock %}

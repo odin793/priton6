@@ -8,3 +8,12 @@ def is_new_str(digit):
         return True
     else:
         return False
+
+@register.filter(name="odd")
+def odd(number):
+    if number % 2:
+        return True
+    else:
+        return False
+        
+    

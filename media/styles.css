@@ -32,7 +32,6 @@
     text-decoration: none;
 }
 
-
 /* menu */
 /*-----------------------------------*/
 
@@ -49,10 +48,8 @@
 
 .content {
     width: 800px;
-    height: 200px;
     background: white;
     position: relative;
-    padding: 10px;
 	border: 3px solid #f0f0f0;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px; 
@@ -60,30 +57,34 @@
     -webkit-box-shadow: 5px 5px 20px 0px #535661;
     -moz-box-shadow: 5px 5px 20px 0px #535661;
     box-shadow: 5px 5px 20px 0px #535661;
- 
 }
 
-.photo_right {
-    align: right;
+.content .grid_col {
+    overflow: hidden;
+    /* any additional style for columns */
 }
 
 .speech {
     font-style: italic;
     text-align: justify;
-    width: 320px;
-    height: 190px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -130px;
-    margin-top: -95px;
+    /*width: 320px;*/
+    /*height: 190px;*/
+    /*position: absolute;*/
+    /*left: 50%;
+    top: 50%;*/
+    /*margin-left: -130px;*/
+    /*margin-top: -95px;*/
     /*line-height: 190px;*/
-    display: table;
+    position: relative;
+}
+
+.table {
+    display: table-cell;
+    vertical-align: middle;    
 }
 
 .speech p {
-    display: table-cell;
-    vertical-align: middle;
+    position: relative;
 
 }
 
@@ -128,7 +129,7 @@
 .speech_block_right {
     font-style: italic;
     position: absolute;
-    right: -45px;
+    /*right: -230px;*/
     width: 180px;    
 	padding: 15px;
     -webkit-border-radius: 20px;
@@ -238,7 +239,7 @@
 .single_comics_description {
 	width: 820px;
 	background: white;
-	padding: 0px 10px 10px 10px;
+	padding: 0px 20px 15px 20px;
 	border: 3px solid #f0f0f0;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px; 

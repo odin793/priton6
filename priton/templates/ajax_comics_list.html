@@ -1,0 +1,22 @@
+{% if comics_list %}
+
+  {% for comics in comics_list %}
+  	<div class="single_comics_box" id="comics_{{ comics.id }}">
+
+  		<div class="comics_title">
+  			<a href="{{ comics.get_absolute_url }}" class="comics_link"><h4>{{ comics.title }}</h4></a>
+  		</div>
+
+  		<a href="{{ comics.get_absolute_url }}" class="comics_picture_link">
+  			<img src="{{ comics.comics_picture_preview }}" />
+  		</a>
+
+  		<a href="{{ comics.get_absolute_url }}" class="comics_detailed_link">Подробнее</a>
+  	</div>
+
+  	<hr>
+  {% endfor %}
+
+{% else %}
+	no_new_items
+{% endif %}

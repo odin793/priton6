@@ -1,9 +1,26 @@
 {% extends 'layout.html' %}			
 
+{% block extrahead %}
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/ajax_comics_loader.js"></script>
+	<script type="text/javascript">
+	document.addEvent('domready', function() {
+		var AL_comics = new AjaxLoader({
+    	load_button_id: 'comics_load_button',
+      item_class: 'single_comics_box',
+      pages_class: 'comics_pages',
+      count: 8,
+      load_url: '/ajax_comics_loader/'
+    });
+	});
+</script>
+
+{% endblock %}
+
 {% block page_content %}			
 
+	<div class="comics_pages" id="page_1">
 	{% for comics in comics_list %}
-		<div class="single_comics_box">
+		<div class="single_comics_box" id="comics_{{ comics.id }}">
 		
 			<div class="comics_title">
 				<a href="{{ comics.get_absolute_url }}" class="comics_link"><h4>{{ comics.title }}</h4></a>
@@ -18,5 +35,14 @@
 	
 		<hr>
 	{% endfor %}
-			
+	</div>
+	
+	<div class="center_block">
+    	<a href="#" id="comics_load_button" style="text-decoration: none;">
+    		<button class="inset large menu_button">
+    			Еще
+    		</button>
+       </a>
+    </div>
+		
 {% endblock %}

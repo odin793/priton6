@@ -97,16 +97,28 @@
 		<hr>
 		
 		<div class="center_block">
+			{% if prev_comics != 'first' %}
 			<a href="{{ prev_comics.get_absolute_url }}" style="text-decoration: none;">
 				<button class="inset large menu_button">
 					Назад
 				</button>
 			</a>
+			{% else %}
+				<button class="inset large menu_button disabled">
+					Назад
+				</button>
+			{% endif %}
+			{% if next_comics != 'last' %}
 			<a href="{{ next_comics.get_absolute_url }}" style="text-decoration: none;">
 				<button class="inset large menu_button_last">
 					Вперед
 				</button>
 			</a>
+			{% else %}
+				<button class="inset large menu_button disabled">
+					Вперед
+				</button>
+			{% endif %}
 		</div>
 
 {% endblock %}

@@ -7,10 +7,10 @@
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}style.css" media="all" />
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/mootools-core-1.4.5.js"></script>
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/mootools-more-1.4.0.1.js"></script>
-		<script type="text/javascript" src="{{ MEDIA_URL }}js/ajax_comics_loader.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 		<script type="text/javascript"> jQuery.noConflict(); </script>      
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/kickstart.js"></script>
+		{% block extrahead %} {% endblock %}
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/prettify.js"></script>    
 
@@ -19,9 +19,9 @@
 	<body> 
 		
 		<div class="header">
-			<a href="{% url patients_list 'patients' %}" style="text-decoration: none;">
+			{% comment %}<a href="{% url patients_list 'patients' %}" style="text-decoration: none; border: none;">{% endcomment %}
 				<img src="{{ MEDIA_URL }}img/priton-head.jpg" />
-			</a>
+			{% comment %}</a>{% endcomment %}
 		</div> 
 		
 		<div class="center_block">

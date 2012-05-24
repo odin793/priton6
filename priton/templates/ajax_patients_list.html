@@ -1,24 +1,7 @@
-{% extends 'layout.html' %}
 {% load priton_templatetags %}
 
-{% block extrahead %}
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/ajax_comics_loader.js"></script>
-	<script type="text/javascript">
-		document.addEvent('domready', function() {
-			var AL_patients = new AjaxLoader({
-      	load_button_id: 'patients_load_button',
-      	item_class: 'content',
-      	pages_class: 'patients_pages',
-      	count: 8,
-      	load_url: '/ajax_patients_loader/'
-    	});
-		});
-	</script>
-{% endblock %}
-			
-{% block page_content %}
+{% if data_tuple %}
 
-	<div class="patients_pages" id="page_1">
 	{% for person, random_phrase in data_tuple %}
 		<div class="col_12 content" id="patient_{{ person.id }}">
 			<div class="col_3 grid_col" style="text-align: center;">
@@ -61,16 +44,15 @@
 				</div>
 			</div>
 	  </div>
+		{% comment %}
+		page is not reloaded, so kickstart scripts don't add clear div. thus add it manually
+		{% endcomment %}
+		<div class="clear">&nbsp;</div>
 		<hr>
 	{% endfor %}	
 	</div>
 
-	<div class="center_block">
-    	<a href="#" id="patients_load_button" style="text-decoration: none;">
-    		<button class="inset large menu_button">
-    			Еще
-    		</button>
-       </a>
-    </div>
 
-{% endblock %}			
+{% else %}
+	no_new_items
+{% endif %}

@@ -1,58 +1,7 @@
 {% load priton_templatetags %}
 
 {% if data_tuple %}
-
-	{% for person, random_phrase in data_tuple %}
-		<div class="col_12 content" id="patient_{{ person.id }}">
-			<div class="col_3 grid_col" style="text-align: center;">
-				{% if forloop.counter|odd %}
-					<div>
-						<img src="{{ person.photo_real }}" />
-						<div>{{ person.full_name }}</div>
-					</div>		
-				{% else %}
-					<div>
-						<img src="{{ person.comic_picture }}" />
-						<div>{{ person.photo_descr }}</div>
-					</div>				
-				{% endif %}
-			</div>
-			<div class="col_6 grid_col">
-				<div class="table">
-					<div class="speech"><p>{{ person.speech }}</p></div>
-				</div>
-			</div>
-			<div class="col_3 grid_col"  style="text-align: center;">
-				{% if forloop.counter|odd %}
-					<div>
-						<img src="{{ person.comic_picture }}" />
-						<div>{{ person.photo_descr }}</div>
-					</div>
-				{% else %}
-					<div>
-						<img src="{{ person.photo_real }}" />
-						<div>{{ person.full_name }}</div>
-					</div>		
-				{% endif %}
-			</div>
-
-			<div class="{% cycle 'speech_block_right' 'speech_block_left' %}" 
-				style="{% cycle 'bottom: -90px; left: 850px;' 'bottom: -80px; left: -255px;' %}">
-				<div class="{% cycle 'phrase speech-bubble-left' 'phrase speech-bubble-right' %}">
-					<div class="phrase_phrase"> {{ random_phrase.phrase }} &#169;</div>
-					<div class="phrase_author"> {{ random_phrase.author }} </div>				
-				</div>
-			</div>
-	  </div>
-		{% comment %}
-		page is not reloaded, so kickstart scripts don't add clear div. thus add it manually
-		{% endcomment %}
-		<div class="clear">&nbsp;</div>
-		<hr>
-	{% endfor %}	
-	</div>
-
-
+	{% include 'person.html' %}
 {% else %}
 	no_new_items
 {% endif %}

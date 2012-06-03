@@ -64,9 +64,10 @@
     /* any additional style for columns */
 }
 
-.speech {
+.about {
     font-style: italic;
     text-align: justify;
+    padding-left: 5px;
     /*width: 320px;*/
     /*height: 190px;*/
     /*position: absolute;*/
@@ -76,16 +77,6 @@
     /*margin-top: -95px;*/
     /*line-height: 190px;*/
     position: relative;
-}
-
-.table {
-    display: table-cell;
-    vertical-align: middle;    
-}
-
-.speech p {
-    position: relative;
-
 }
 
 .sig_left {

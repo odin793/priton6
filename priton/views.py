@@ -28,34 +28,32 @@ def my_sample(id_list, seq_len, results=None):
         random_id_list += sample(id_list, seq_len)
     return random_id_list        
 
-
 @render_to('patients_list.html')
 def persons_list(request, page_type):
     is_doctors=False   # by default the page is patients_list
     if page_type == 'doctors':
         is_doctors=True
     persons_list = Person.objects.filter(doctor=is_doctors)[:2]
-    phrases_id_list = [obj.id for obj in Phrase.objects.filter(author__doctor=is_doctors)]
+    phrases_id_list = [obj.id for obj in Phrase.objects.filter(\
+        author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)
     phrases_list = list(phrases)
     random_phrases_list = my_sample(phrases_list, persons_list.count())
     data_tuple = zip(persons_list, random_phrases_list)
     return {
         'data_tuple': data_tuple,
+        'is_doctors': is_doctors,
     }
-
 
 @cache_page(20)
 def bla(request):
     random_int = sample(range(1,100), 1)
     return simple_render(request, 'bla.html', {'r': random_int})
 
-
 @render_to('comics_list.html')
 def comics_list(request):
     comics_list = Comics.objects.all()[:2] # dev version
     return {'comics_list': comics_list}
-
 
 @render_to('single_comics.html')
 def comics(request, comics_id):
@@ -107,8 +105,10 @@ def ajax_patients_loader(request):
         is_doctors = False
     count = request.POST.get('count', 8)
     
-    new_persons_list = Person.objects.filter(doctor=is_doctors).filter(id__gt=last_person_db_id)[:count]
-    phrases_id_list = [obj.id for obj in Phrase.objects.filter(author__doctor=is_doctors)]
+    new_persons_list = Person.objects.filter(doctor=is_doctors).filter(\
+        id__gt=last_person_db_id)[:count]
+    phrases_id_list = [obj.id for obj in Phrase.objects.filter(\
+        author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)
     phrases_list = list(phrases)
     random_phrases_list = my_sample(phrases_list, new_persons_list.count())

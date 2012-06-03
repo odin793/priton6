@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% block title %}
+	<title>{{ comics.title }}</title>
+{% endblock %}
+
 {% block page_content %}
 
 		<div class="single_comics_box">
@@ -76,7 +80,7 @@
 							{% for block in essenses_blocks %}
 								<tr>
 									{% for essense in block %}
-										<td> {{ essense.name }} </td>
+										<td>{{ essense.name }}</td>
 									{% endfor %}
 								</tr>
 							{% endfor %}

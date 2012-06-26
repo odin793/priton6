@@ -11,6 +11,8 @@ def main_redirect(request):
 
 # random.sample wrap
 def my_sample(id_list, seq_len, results=None):
+    if id_list == []:
+        raise AttributeError('first arg should be non-empty list')
     if results is not None:
         random_id_list = results
     else:
@@ -34,7 +36,10 @@ def persons_list(request, page_type):
         author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)
     phrases_list = list(phrases)
-    random_phrases_list = my_sample(phrases_list, persons_list.count())
+    try:
+        random_phrases_list = my_sample(phrases_list, persons_list.count())
+    except AttributeError:
+        random_phrases_list = []
     data_tuple = zip(persons_list, random_phrases_list)
     return {
         'data_tuple': data_tuple,

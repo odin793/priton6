@@ -2,7 +2,7 @@
 {% load priton_templatetags %}
 
 {% block extrahead %}
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/ajax_comics_loader.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/ajax_comics_loader.js"></script>
 	<script type="text/javascript">
 		document.addEvent('domready', function() {
 			var AL_patients = new AjaxLoader({

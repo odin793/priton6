@@ -1,6 +1,7 @@
 *.pyc
 settings_local.py
 priton6_db
-media/sources/
+files/media/sources/
 venv/
+all_static/
 

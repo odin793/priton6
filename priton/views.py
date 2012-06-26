@@ -9,10 +9,6 @@ from django.core.exceptions import ObjectDoesNotExist
 def main_redirect(request):
     return redirect('/patients/')   # main page
 
-
-def simple_render(request, template, dict):
-    return render_to_response(template, RequestContext(request, dict))
-
 # random.sample wrap
 def my_sample(id_list, seq_len, results=None):
     if results is not None:
@@ -33,7 +29,7 @@ def persons_list(request, page_type):
     is_doctors=False   # by default the page is patients_list
     if page_type == 'doctors':
         is_doctors=True
-    persons_list = Person.objects.filter(doctor=is_doctors)[:2]
+    persons_list = Person.objects.filter(doctor=is_doctors)[:10]
     phrases_id_list = [obj.id for obj in Phrase.objects.filter(\
         author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)
@@ -45,14 +41,14 @@ def persons_list(request, page_type):
         'is_doctors': is_doctors,
     }
 
-@cache_page(20)
-def bla(request):
-    random_int = sample(range(1,100), 1)
-    return simple_render(request, 'bla.html', {'r': random_int})
+#@cache_page(20)
+#def bla(request):
+#    random_int = sample(range(1,100), 1)
+#    return simple_render(request, 'bla.html', {'r': random_int})
 
 @render_to('comics_list.html')
 def comics_list(request):
-    comics_list = Comics.objects.all()[:2] # dev version
+    comics_list = Comics.objects.all()[:5]
     return {'comics_list': comics_list}
 
 @render_to('single_comics.html')
@@ -84,7 +80,7 @@ def ajax_comics_loader(request):
     last_page_id = request.POST.get('last_page_id', 'page_1')
     last_comics_id = request.POST.get('last_item_id', 'comics_1')
     last_comics_db_id = int(last_comics_id[-1])
-    count = request.POST.get('count', 8)
+    count = request.POST.get('count', 5)
     
     new_comics = Comics.objects.filter(id__gt=last_comics_db_id)[:count]
     return {
@@ -103,7 +99,7 @@ def ajax_patients_loader(request):
         # now we know the page type: patients or doctors.
     except ObjectDoesNotExist:
         is_doctors = False
-    count = request.POST.get('count', 8)
+    count = request.POST.get('count', 10)
     
     new_persons_list = Person.objects.filter(doctor=is_doctors).filter(\
         id__gt=last_person_db_id)[:count]

@@ -31,7 +31,7 @@ def persons_list(request, page_type):
     is_doctors=False   # by default the page is patients_list
     if page_type == 'doctors':
         is_doctors=True
-    persons_list = Person.objects.filter(doctor=is_doctors)[:10]
+    persons_list = Person.objects.filter(doctor=is_doctors).order_by('id')[:10]
     phrases_id_list = [obj.id for obj in Phrase.objects.filter(\
         author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)
@@ -84,10 +84,10 @@ def comics(request, comics_id):
 def ajax_comics_loader(request):
     last_page_id = request.POST.get('last_page_id', 'page_1')
     last_comics_id = request.POST.get('last_item_id', 'comics_1')
-    last_comics_db_id = int(last_comics_id[-1])
+    last_comics_db_id = int(last_comics_id.split('_')[1])
     count = request.POST.get('count', 5)
     
-    new_comics = Comics.objects.filter(id__gt=last_comics_db_id)[:count]
+    new_comics = Comics.objects.filter(id__gt=last_comics_db_id).order_by('id')[:count]
     return {
         'comics_list': new_comics,
     }
@@ -96,7 +96,7 @@ def ajax_comics_loader(request):
 def ajax_patients_loader(request):
     last_page_id = request.POST.get('last_page_id', 'page_1')
     last_person_id = request.POST.get('last_item_id', 'patient_1')
-    last_person_db_id = int(last_person_id[-1])
+    last_person_db_id = int(last_person_id.split('_')[1])
     try:
         # check type of the last person on the page
         last_person = Person.objects.get(id=last_person_db_id)
@@ -107,7 +107,7 @@ def ajax_patients_loader(request):
     count = request.POST.get('count', 10)
     
     new_persons_list = Person.objects.filter(doctor=is_doctors).filter(\
-        id__gt=last_person_db_id)[:count]
+        id__gt=last_person_db_id).order_by('id')[:count]
     phrases_id_list = [obj.id for obj in Phrase.objects.filter(\
         author__doctor=is_doctors)]
     phrases = Phrase.objects.filter(pk__in=phrases_id_list)

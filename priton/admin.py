@@ -28,4 +28,4 @@ class EssenseAdmin(admin.ModelAdmin):
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Phrase, PhraseAdmin)
 admin.site.register(Comics, ComicsAdmin)
-#admin.site.register(Essense, EssenseAdmin)
+admin.site.register(Essense, EssenseAdmin)

@@ -1,9 +1,14 @@
 from django.contrib import admin
 from priton.models import Person, Phrase, Comics, Essense
 
+class PhraseInline(admin.TabularInline):
+    model = Phrase
+    
+    
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'short_name',)
-    #list_editable = ('sort', )
+    list_filter = ('doctor',)
+    inlines = (PhraseInline,)
 
 
 class PhraseAdmin(admin.ModelAdmin):
@@ -18,7 +23,6 @@ class ComicsAdmin(admin.ModelAdmin):
     list_display = ('title', 'comics_descr',)
     inlines = (EssenseInline,)
 #    exclude = ('participants', )
-    #list_editable = ('sort', )
 
 
 class EssenseAdmin(admin.ModelAdmin):

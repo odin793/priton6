@@ -17,11 +17,7 @@
 		</div>
 		<div class="col_6 grid_col">
 			<div>
-				{% if person.doctor %}
-					<h6>Услуги:</h6>
-				{% else %}
-					<h6>О себе:</h6>
-				{% endif %}
+				<h6>О себе:</h6>
 				<div class="about"><p>{{ person.speech }}</p></div>
 				{% if person.diagnosis %}
 					<h6>Диагноз:</h6>

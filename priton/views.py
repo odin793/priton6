@@ -59,7 +59,7 @@ def comics_list(request):
 @render_to('single_comics.html')
 def comics(request, comics_id):
     comics = get_object_or_404(Comics, id=comics_id)
-    prev_comics = Comics.objects.filter(id__lt=comics.id).order_by('-id')
+    prev_comics = Comics.objects.filter(id__lt=comics.id).order_by('id')
     prev_comics = prev_comics[0] if prev_comics.count() != 0 else 'first'
     next_comics = Comics.objects.filter(id__gt=comics.id)
     next_comics = next_comics[0] if next_comics.count() != 0 else 'last'

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from tinymce import models as tinymce_models
 
 class Person(models.Model):
     short_name = models.CharField(u'Имя', max_length=50)
@@ -51,7 +52,8 @@ class Comics(models.Model):
     title = models.CharField(u'Название', max_length=60)
     comics_picture_preview = models.URLField(u'Превьюшка картинки комикса')
     comics_picture = models.URLField(u'Картинка комикса')
-    comics_descr = models.TextField(u'Описание комикса')
+    #comics_descr = models.TextField(u'Описание комикса')
+    comics_descr = tinymce_models.HTMLField()
     participants = models.ManyToManyField(Person, related_name='comics_list')
     sort = models.SmallIntegerField(u'Порядок следования', default=0)
     

@@ -191,7 +191,7 @@ TINYMCE_DEFAULT_CONFIG = {
                                     "separator,undo,redo,separator,link,unlink,image," 
                                     "separator,cleanup,code,removeformat,charmap,"
                                     "fullscreen,paste",
-    'theme_advanced_buttons2' : "",
+    'theme_advanced_buttons2' : "justifyleft,justifycenter,justifyright,justifyfull",
     'theme_advanced_buttons3' : "",
 }
 

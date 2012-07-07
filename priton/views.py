@@ -53,13 +53,13 @@ def persons_list(request, page_type):
 
 @render_to('comics_list.html')
 def comics_list(request):
-    comics_list = Comics.objects.all()[:5]
+    comics_list = Comics.objects.all().order_by('id')[:5]
     return {'comics_list': comics_list}
 
 @render_to('single_comics.html')
 def comics(request, comics_id):
     comics = get_object_or_404(Comics, id=comics_id)
-    prev_comics = Comics.objects.filter(id__lt=comics.id).order_by('id')
+    prev_comics = Comics.objects.filter(id__lt=comics.id).order_by('-id')
     prev_comics = prev_comics[0] if prev_comics.count() != 0 else 'first'
     next_comics = Comics.objects.filter(id__gt=comics.id)
     next_comics = next_comics[0] if next_comics.count() != 0 else 'last'

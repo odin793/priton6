@@ -43,7 +43,7 @@ TIME_ZONE = 'Europe/Moscow'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 SITE_ID = 1
 
@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'priton',
+    'tinymce',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -176,5 +177,25 @@ LOGGING = {
         },
     }
 }
+
+TINYMCE_JS_URL = path.join(STATIC_URL, 'js/tinymce/tiny_mce.js')
+TINYMCE_JS_ROOT =  path.join(STATIC_ROOT, 'js/tinymce')
+
+TINYMCE_DEFAULT_CONFIG = {
+    # 'plugins': "table,spellchecker,paste,searchreplace",
+    "plugins": "safari",
+    'theme': "advanced",
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_toolbar_align': 'left', 
+    'theme_advanced_buttons1' : "bold,italic,strikethrough,bullist,numlist," 
+                                    "separator,undo,redo,separator,link,unlink,image," 
+                                    "separator,cleanup,code,removeformat,charmap,"
+                                    "fullscreen,paste",
+    'theme_advanced_buttons2' : "",
+    'theme_advanced_buttons3' : "",
+}
+
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False
 
 from settings_local import *

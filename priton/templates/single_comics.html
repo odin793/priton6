@@ -4,6 +4,16 @@
 	<title>{{ comics.title }}</title>
 {% endblock %}
 
+{% block extrahead %}
+{% comment %} correcting some kickstart.css styles {% endcomment %}
+<style rel="stylesheet" type="text/css">
+	strong, b {
+		color: black;
+		background: none;
+	}
+</style>
+{% endblock %}
+
 {% block page_content %}
 
 		<div class="single_comics_box">
@@ -93,7 +103,7 @@
 				<h5>Описание</h5>
 			</div>
 			<div class="comics_description">
-				{{ comics.comics_descr }}
+				{{ comics.comics_descr|safe }}
 			</div>			
 			
 		</div>

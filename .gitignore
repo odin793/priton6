@@ -4,4 +4,4 @@ priton6_db
 files/media/sources/
 venv/
 all_static/
-
+files/static/js/tinymce/
